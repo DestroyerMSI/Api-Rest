@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probar API</title>
+    <script type="module">
+        let movies = [];
+        fetch('http://localhost:3000/movies')
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return res.json();
+            })
+            .then(response => {
+                const html = response.map(singlemovie => {
+                    return `
+                        <div class='div1'>
+                            <h1>${singlemovie.nombre}</h1>
+                             <button>Eliminar</button>
+                        </div>
+                    `;
+                }).join('');
+                document.querySelector('main').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error fetching movies:', error);
+                document.querySelector('main').innerHTML = '<p>Error al cargar las películas.</p>';
+            });
+    </script>
+    <style>
+         main{
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fill,minmax(240px, 1fr)
+            );
+            column-gap: 20px;
+            row-gap: 10px;
+         }
+        .div1{
+     width: 100%;
+     border: 1px solid red;
+     border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+  background: radial-gradient(circle, red, rgb(64, 158, 247));
+        }
+    </style>
+</head>
+<body>
+    <main>
+      
+    </main>
+</body>
+</html>

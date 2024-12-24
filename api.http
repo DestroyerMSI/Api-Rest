@@ -1,0 +1,30 @@
+
+ ### 
+ GET http://localhost:3000/movies
+
+
+###
+
+GET http://localhost:3000/movies/1019f828-af5d-11ef-9c6d-38d547280635
+
+### 
+POST  http://localhost:3000/movies
+Content-Type: application/json
+
+   { 
+ "nombre": "Plpssitt1n", 
+   "url": "https://www.idb.rfom121/sl12esa/12321",
+    "genero": "Crimen" }
+
+    
+####
+PATCH http://localhost:3000/movies/1019f828-af5d-11ef-9c6d-38d547280635
+Content-Type: application/json
+
+{
+  "nombre": "Lindass",
+  "genero": "CRIMEN"
+}
+
+### 
+DELETE   http://localhost:3000/movies/3
